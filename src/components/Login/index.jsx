@@ -73,7 +73,7 @@ const Login = () => {
           setError(null);
 
           // Navigate to User profile once logged in
-          navigate(`/${refUsername.current.value}`);
+          navigate(`/memoirs-frontend/${refUsername.current.value}`);
         } catch (error) {
           return setError(error);
         }
@@ -90,22 +90,22 @@ const Login = () => {
         <input
           ref={refUsername}
           className={style.inputText}
-          type="text"
-          name="username"
-          placeholder="Username"
+          type='text'
+          name='username'
+          placeholder='Username'
         />
         <input
           ref={refPassword}
           className={style.inputText}
-          type="password"
-          name="password"
-          placeholder="Password"
+          type='password'
+          name='password'
+          placeholder='Password'
         />
         <div>
-          <button onClick={inputValidation} type="button">
+          <button onClick={inputValidation} type='button'>
             Login
           </button>
-          <Link to="/register">Register</Link>
+          <Link to='/register'>Register</Link>
         </div>
         {error && <p className={style.error}>{error}</p>}
       </form>

@@ -22,13 +22,13 @@ const NavBar = () => {
 
   const homeNavigation = () => {
     if (username === null) {
-      return navigate('/');
+      return navigate('/memoirs-frontend/login');
     }
     refSearchUsername.current.value = '';
     setError(null);
     // Update User Data in UserContext when logo is clicked
     updateUserData(username);
-    navigate(`/${username}`);
+    navigate(`/memoirs-frontend/${username}`);
   };
 
   const profileNavigation = () => {
@@ -36,7 +36,7 @@ const NavBar = () => {
     setError(null);
     // Update User Data in UserContext when profile picture is clicked
     updateUserData(username);
-    navigate(`/${username}`);
+    navigate(`/memoirs-frontend/${username}`);
   };
 
   // Get limit and offset queries
@@ -68,7 +68,7 @@ const NavBar = () => {
       setError(null);
 
       // Navigate to User profile once logged in
-      navigate(`/${refSearchUsername.current.value}`);
+      navigate(`/memoirs-frontend/${refSearchUsername.current.value}`);
     } catch (error) {
       return setError(error);
     }
@@ -89,13 +89,13 @@ const NavBar = () => {
           <input
             ref={refSearchUsername}
             className={style.searchInput}
-            type="text"
-            placeholder="Search username"
+            type='text'
+            placeholder='Search username'
           />
           <button
             className={style.searchButton}
             onClick={getUserProfile}
-            type="button"
+            type='button'
           >
             Search
           </button>
@@ -109,7 +109,7 @@ const NavBar = () => {
               <img
                 onClick={profileNavigation}
                 src={user.imageUrl}
-                alt="profile picture"
+                alt='profile picture'
                 className={style.profilePicture}
               />
             </>

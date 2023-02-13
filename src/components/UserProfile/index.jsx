@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '@/UserContext';
 import style from '@/components/UserProfile/style.module.css';
 import UserPosts from '@/components/UserPosts';
@@ -22,10 +22,16 @@ function UserProfile() {
 
   const { usernameParams } = useParams();
 
+  const navigate = useNavigate();
+
   const [noUserFound, setNoUserFound] = useState();
 
   // Get user data if searched or enter username via URL
   const getUserProfile = async (username) => {
+    // if (usernameParams === '' && user === undefined) {
+    //   return navigate('/login');
+    // }
+
     try {
       const response = await fetch(
         `https://memoirs.onrender.com/api/v1/users/${username}?limit=6&offset=0`
@@ -66,7 +72,7 @@ function UserProfile() {
                   ? user.imageUrl
                   : searchedUser.imageUrl
               }
-              alt="profile picture"
+              alt='profile picture'
               className={style.profilePicture}
             />
             <div className={style.userDetails}>
@@ -78,7 +84,7 @@ function UserProfile() {
               <p className={style.username}>@{usernameParams}</p>
               {username !== null && usernameParams === username ? (
                 <Link
-                  to="update"
+                  to='update'
                   state={{
                     previousFirstName: firstName,
                     previousLastName: lastName,
