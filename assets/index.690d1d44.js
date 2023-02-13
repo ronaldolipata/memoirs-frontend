@@ -1,0 +1,1 @@
+import t from"./index.b2d6d0e5.js";import{j as o}from"./index.a2e78bea.js";import"./UserContext.340ef284.js";import"./index.876dce40.js";const r="_root_1fs9p_1",i={root:r};function m(){return o("div",{className:i.container,children:o(t,{})})}export{m as default};
